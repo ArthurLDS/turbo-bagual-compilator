@@ -1,4 +1,5 @@
 # Documentação Compilador Turbo Bagual
+Um compilador Kotlin para Turbo Bagual, a linguagem dos pampas gauchos
 
 ## Comandos
 
