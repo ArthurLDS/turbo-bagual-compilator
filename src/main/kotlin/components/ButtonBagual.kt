@@ -1,7 +1,6 @@
 package components
 
 import kotlinx.css.*
-import kotlinx.html.classes
 import kotlinx.html.js.onClickFunction
 import react.*
 import styled.css
@@ -10,24 +9,27 @@ import styled.styledButton
 external interface ButtonCompileProps : RProps {
     var label: String
     var onClick: () -> Unit
+    var color: String
 }
 
 @JsExport
-class ButtonCompile : RComponent<ButtonCompileProps, RState>() {
+class ButtonBagual : RComponent<ButtonCompileProps, RState>() {
     override fun RBuilder.render() {
         styledButton {
             css {
-                marginTop = 20.px
-                paddingTop = 16.px
-                paddingBottom = 16.px
-                borderRadius = 8.px
+                paddingTop = 5.px
+                paddingBottom = 5.px
+                borderRadius = 5.px
+                marginLeft = 4.px
+                width = 100.px
+                fontSize = 8.pt
                 fontWeight = FontWeight.bold
-                borderColor = Color("#00cc00")
-                width = 98.pct
+                borderColor = Color(props.color)
                 textTransform = TextTransform.uppercase
                 color = Color.white
+                display = Display.inline
                 cursor = Cursor.pointer
-                backgroundColor = Color("#00cc00")
+                backgroundColor = Color(props.color)
             }
             attrs {
                 onClickFunction = { props.onClick() }
@@ -37,8 +39,8 @@ class ButtonCompile : RComponent<ButtonCompileProps, RState>() {
     }
 }
 
-fun RBuilder.buttonCompile(handler: ButtonCompileProps.() -> Unit): ReactElement {
-    return child(ButtonCompile::class) {
+fun RBuilder.buttonBagual(handler: ButtonCompileProps.() -> Unit): ReactElement {
+    return child(ButtonBagual::class) {
         this.attrs(handler)
     }
 }
