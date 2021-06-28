@@ -1,4 +1,4 @@
-import compilator.BagualSintaxValidator
+import compilator.BagualSintax
 import compilator.BagualToken
 import components.buttonBagual
 import components.codePad
@@ -30,6 +30,7 @@ class App : RComponent<RProps, AppState>() {
                 width = 582.px
                 textAlign = TextAlign.left
                 display = Display.inlineBlock
+                marginTop = 20.px
             }
             styledDiv {
                 css {
@@ -78,7 +79,7 @@ class App : RComponent<RProps, AppState>() {
             onChange = {
                 setState {
                     bagualCode = it
-                    isCodeValid = BagualSintaxValidator.validate(it).isEmpty()
+                    isCodeValid = BagualSintax.validate(it).isEmpty()
                 }
             }
         }
@@ -95,9 +96,9 @@ class App : RComponent<RProps, AppState>() {
                 textAlign = TextAlign.left
             }
             validateResult {
-                errorList = BagualSintaxValidator.validate(state.bagualCode)
+                errorList = BagualSintax.validate(state.bagualCode)
+                hasCode = state.bagualCode.isNotEmpty()
             }
         }
-
     }
 }
